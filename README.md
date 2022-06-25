@@ -1,5 +1,7 @@
 # timotk.github.io
 
+Code for [my blog](https://timotk.github.io/). 
+
 ## Install
 
 ```shell
