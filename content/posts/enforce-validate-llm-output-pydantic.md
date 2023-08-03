@@ -5,7 +5,7 @@ draft: true
 toc: false
 images:
 tags:
-	- untagged
+  - untagged
 ---
 
 # Introduction
@@ -16,6 +16,7 @@ By leveraging Pydantic's type validation and prompt engineering, we can enforce 
 _All code examples in this blogpost are written in Python. The LLM used is [OpenAI's gpt-3.5-turbo](https://platform.openai.com/docs/guides/gpt)._
 
 # Query the LLM
+
 To query the LLM, we use the following function:
 
 ```python
@@ -24,12 +25,12 @@ import openai
 def query(prompt: str) -> str:
 	"""Query the LLM with the given prompt."""
 	completion = openai.ChatCompletion.create(
-	  model="gpt-3.5-turbo",
-	  messages=[
+		model="gpt-3.5-turbo",
+		messages=[
 			{
-			  "role": "user",
-        "content": prompt,
-      }
+				"role": "user",
+				"content": prompt,
+			}
 		],
 		temperature=0.0,
 	)
@@ -37,7 +38,9 @@ def query(prompt: str) -> str:
 ```
 
 # Query the model
+
 We can query the model with a simple question:
+
 ```python
 response = query("What is the largest planet in our solar system?")
 print(response)
@@ -45,6 +48,7 @@ print(response)
 ```
 
 # Enforcing JSON output with a prompt
+
 In our prompt, we can ask the LLM to respond in a certain format:
 
 ````python
@@ -66,8 +70,8 @@ question = "What is the largest planet in our solar system?"
 response = query(prompt + question)
 print(response)
 '{
-    "thought": "This is a factual question that can be answered with scientific knowledge.",
-    "answer": "The largest planet in our solar system is Jupiter."
+	"thought": "This is a factual question that can be answered with scientific knowledge.",
+	"answer": "The largest planet in our solar system is Jupiter."
 }'
 ```
 
@@ -87,8 +91,8 @@ print(parsed_response["answer"])
 from pydantic import BaseModel
 
 class ThoughtAnswerResponse(BaseModel):
-		thought: str
-		answer: str
+	thought: str
+	answer: str
 
 raw_response = query(prompt)
 
@@ -103,6 +107,7 @@ print(type(validated_response))
 ```
 
 # Using the Pydantic model in the prompt
+
 At this moment, we describe our response format in two places:
 
 - a JSON description in our prompt
@@ -142,6 +147,7 @@ I will ask you questions, and you will respond.Your response should be in the fo
 ````
 
 The response will look like this:
+
 ```json
 {
   "thought": "The largest planet in our solar system is Jupiter.",
@@ -185,7 +191,7 @@ prompt = """Your response should be in the following format:
 
 Of course, the model could potentially still use other values. To validate it, we would need to write custom code.
 
-With Pydantic, it is a lot easier. We create a new type called `Difficulty` using a [Literal](https://docs.python.org/3/library/typing.html#typing.Literal). 
+With Pydantic, it is a lot easier. We create a new type called `Difficulty` using a [Literal](https://docs.python.org/3/library/typing.html#typing.Literal).
 A Literal allows us to specify the use of a select list of values.
 We add a `Difficulty` type hint to the `difficulty` field in our Pydantic model:
 
@@ -205,7 +211,6 @@ class ThoughtAnswerResponse(BaseModel):
 	difficulty: Difficulty
 ```
 
-
 The LLM responds may respond with another value than we allow:
 
 ```json
@@ -223,8 +228,9 @@ validated_response = ThoughtAnswerResponse.model_validate_json(response)
 
 ValidationError: 1 validation error for ThoughtAnswerResponse
 difficulty
-  Input should be 'easy', 'medium' or 'hard' [type=literal_error, input_value='Unknown', input_type=str]
+	Input should be 'easy', 'medium' or 'hard' [type=literal_error, input_value='Unknown', input_type=str]
 ```
 
 # Conclusion
+
 By using Pydantic and prompt engineering, you can enforce and validate the output of LLMs. This provides you with greater control of LLM output and allow you to build more robust AI systems.
