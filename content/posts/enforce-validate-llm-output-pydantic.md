@@ -22,18 +22,18 @@ To query the LLM, we use the following function:
 import openai
 
 def query(prompt: str) -> str:
-		"""Query the LLM with the given prompt."""
-		completion = openai.ChatCompletion.create(
-		model="gpt-3.5-turbo",
-				messages=[
-						{
-								"role": "user",
-								"content": prompt,
-						}
-				],
-				temperature=0.0,
-		)
-		return completion.choices[0].message.content
+	"""Query the LLM with the given prompt."""
+	completion = openai.ChatCompletion.create(
+	  model="gpt-3.5-turbo",
+	  messages=[
+			{
+			  "role": "user",
+        "content": prompt,
+      }
+		],
+		temperature=0.0,
+	)
+	return completion.choices[0].message.content
 ```
 
 # Query the model
@@ -160,11 +160,11 @@ from pydantic import ValidationError
 
 
 try:
-	  validated_response = ThoughtAnswerResponse.model_validate_json(raw_response)
+	validated_response = ThoughtAnswerResponse.model_validate_json(raw_response)
 except ValidationError as e:
-		print("Unable to validate LLM response.")
-		# TODO: Add your own error handling here
-	  raise e
+	print("Unable to validate LLM response.")
+	# TODO: Add your own error handling here
+	raise e
 ```
 
 # Bonus: Enforce specific values using a Literal
@@ -200,9 +200,9 @@ Difficulty = Literal["easy", "medium", "hard"]
 
 
 class ThoughtAnswerResponse(BaseModel):
-		thought: str
-		answer: str
-		difficulty: Difficulty
+	thought: str
+	answer: str
+	difficulty: Difficulty
 ```
 
 
