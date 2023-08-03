@@ -23,18 +23,18 @@ To query the LLM, we use the following function:
 import openai
 
 def query(prompt: str) -> str:
-	"""Query the LLM with the given prompt."""
-	completion = openai.ChatCompletion.create(
-		model="gpt-3.5-turbo",
-		messages=[
-			{
-				"role": "user",
-				"content": prompt,
-			}
-		],
-		temperature=0.0,
-	)
-	return completion.choices[0].message.content
+    """Query the LLM with the given prompt."""
+    completion = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo",
+        messages=[
+            {
+                "role": "user",
+                "content": prompt,
+            }
+        ],
+        temperature=0.0,
+    )
+    return completion.choices[0].message.content
 ```
 
 # Query the model
@@ -90,9 +90,11 @@ print(parsed_response["answer"])
 ```python
 from pydantic import BaseModel
 
+
 class ThoughtAnswerResponse(BaseModel):
-	thought: str
-	answer: str
+    thought: str
+    answer: str
+
 
 raw_response = query(prompt)
 
@@ -164,13 +166,12 @@ The LLM may still produce results that are not consistent with our model. Theref
 ```python
 from pydantic import ValidationError
 
-
 try:
-	validated_response = ThoughtAnswerResponse.model_validate_json(raw_response)
+    validated_response = ThoughtAnswerResponse.model_validate_json(raw_response)
 except ValidationError as e:
-	print("Unable to validate LLM response.")
-	# TODO: Add your own error handling here
-	raise e
+    print("Unable to validate LLM response.")
+    # TODO: Add your own error handling here
+    raise e
 ```
 
 # Bonus: Enforce specific values using a Literal
@@ -181,9 +182,9 @@ Sometimes, you want to enforce the use of specific values for a given field. We 
 prompt = """Your response should be in the following format:
 ```json
 {
-	"thought": "How you think about the question",
-	"answer": "The answer to the question",
-	"difficulty": "How difficult the question was. One of easy, medium or hard"
+  "thought": "How you think about the question",
+  "answer": "The answer to the question",
+  "difficulty": "How difficult the question was. One of easy, medium or hard"
 }
 ```
 """"
@@ -206,9 +207,9 @@ Difficulty = Literal["easy", "medium", "hard"]
 
 
 class ThoughtAnswerResponse(BaseModel):
-	thought: str
-	answer: str
-	difficulty: Difficulty
+    thought: str
+    answer: str
+    difficulty: Difficulty
 ```
 
 The LLM responds may respond with another value than we allow:
@@ -228,7 +229,7 @@ validated_response = ThoughtAnswerResponse.model_validate_json(response)
 
 ValidationError: 1 validation error for ThoughtAnswerResponse
 difficulty
-	Input should be 'easy', 'medium' or 'hard' [type=literal_error, input_value='Unknown', input_type=str]
+    Input should be 'easy', 'medium' or 'hard' [type=literal_error, input_value='Unknown', input_type=str]
 ```
 
 # Conclusion
