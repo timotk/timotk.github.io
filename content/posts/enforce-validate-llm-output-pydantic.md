@@ -161,7 +161,7 @@ Now, whenever you change the Pydantic model, the corresponding schema will be pu
 
 # Error handling
 
-The LLM may still produce results that are not consistent with our model. Therefore, we can add some code to catch this:
+The LLM may still produce results that are not consistent with our model. We can add some code to catch this:
 
 ```python
 from pydantic import ValidationError
@@ -222,7 +222,7 @@ The LLM responds may respond with a value we do not allow:
 }
 ```
 
-When we parse this result, Pydantic will validate the values for the `difficulty` field. Clearly, `Unknown` does not match one of the values specified in the Literal type we have defined, so we get the following error:
+When we parse this result, Pydantic will validate the values for the `difficulty` field. `Unknown` does not match one of the values specified in the Literal type we have defined. So we get the following error:
 
 ```python
 validated_response = ThoughtAnswerResponse.model_validate_json(response)
