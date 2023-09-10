@@ -2,6 +2,10 @@
 title: "A Terminal Spinner in Python"
 date: 2022-06-25T12:30:00+02:00
 draft: false
+
+tags:
+- python
+- terminal
 ---
 We are going to build a spinning status indicator that runs while other code is executing.
 
