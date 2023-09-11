@@ -3,12 +3,12 @@ name: workflow
 on:
   push:
     branches:
-      - main  # Set a branch to deploy
+      - main
   pull_request:
 
 jobs:
-  vale:
-    name: runner / vale
+  check:
+    name: check
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -17,29 +17,45 @@ jobs:
           files: content
           args: --minAlertLevel=error
           reporter: github-pr-check
-  deploy:
-    needs: vale
-    runs-on: ubuntu-20.04
-
+  build:
+    needs: check
+    name: build
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
         with:
           submodules: true  # Fetch Hugo themes (true OR recursive)
           fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
-
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
           hugo-version: 'latest'
           extended: true
-
       - name: Build
         run: hugo --minify
+      # Create artifact
+      - name: Archive
+        uses: actions/upload-artifact@v2
+        with:
+          name: public
+          path: public
+  deploy:
+    needs: build
+    name: deploy
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
 
+    # Get the artifact from the build, then deploy it to GitHub Pages
+    steps:
+      - name: Download Artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: public
+          path: public
+      - uses: actions/checkout@v2
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         if: github.ref == 'refs/heads/main'
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public
-
