@@ -16,7 +16,6 @@ jobs:
         with:
           files: ./content
           args: --minAlertLevel=error
-          reporter: github-pr-check
   build:
     name: build
     runs-on: ubuntu-latest
