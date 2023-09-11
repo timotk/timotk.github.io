@@ -1,4 +1,4 @@
-name: github pages
+name: workflow
 
 on:
   push:
@@ -7,8 +7,20 @@ on:
   pull_request:
 
 jobs:
+  vale:
+    name: runner / vale
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: errata-ai/vale-action@reviewdog
+        with:
+          # files: content
+          args: --minAlertLevel=error
+          reporter: github-pr-check
   deploy:
+    needs: vale
     runs-on: ubuntu-20.04
+
     steps:
       - uses: actions/checkout@v2
         with:
