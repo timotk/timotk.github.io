@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>terminal on Timo&#39;s Blog</title>
+    <link>https://timotk.github.io/tags/terminal/</link>
+    <description>Recent content in terminal on Timo&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 25 Jun 2022 12:30:00 +0200</lastBuildDate><atom:link href="https://timotk.github.io/tags/terminal/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>A Terminal Spinner in Python</title>
+      <link>https://timotk.github.io/posts/a-terminal-spinner-in-python/</link>
+      <pubDate>Sat, 25 Jun 2022 12:30:00 +0200</pubDate>
+      
+      <guid>https://timotk.github.io/posts/a-terminal-spinner-in-python/</guid>
+      <description>We are going to build a spinning status indicator that runs while other code is executing.
+It will look like this: Why? You&amp;rsquo;ve got some code that takes a while to run.
+import time import random def slow_func(): seconds = random.randint(2, 5) time.sleep(seconds) print(&amp;#34;Done!&amp;#34;) if __name__ == &amp;#39;__main__&amp;#39;: slow_func() Now, when you execute this, you&amp;rsquo;ll see the following: You&amp;rsquo;ll wonder whether your code or your system is working correctly or frozen.</description>
+    </item>
+    
+  </channel>
+</rss>

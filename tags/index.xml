@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Tags on Timo&#39;s Blog</title>
+    <link>https://timotk.github.io/tags/</link>
+    <description>Recent content in Tags on Timo&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 07 Aug 2023 13:00:00 +0200</lastBuildDate><atom:link href="https://timotk.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>gpt</title>
+      <link>https://timotk.github.io/tags/gpt/</link>
+      <pubDate>Mon, 07 Aug 2023 13:00:00 +0200</pubDate>
+      
+      <guid>https://timotk.github.io/tags/gpt/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>llm</title>
+      <link>https://timotk.github.io/tags/llm/</link>
+      <pubDate>Mon, 07 Aug 2023 13:00:00 +0200</pubDate>
+      
+      <guid>https://timotk.github.io/tags/llm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>openai</title>
+      <link>https://timotk.github.io/tags/openai/</link>
+      <pubDate>Mon, 07 Aug 2023 13:00:00 +0200</pubDate>
+      
+      <guid>https://timotk.github.io/tags/openai/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>pydantic</title>
+      <link>https://timotk.github.io/tags/pydantic/</link>
+      <pubDate>Mon, 07 Aug 2023 13:00:00 +0200</pubDate>
+      
+      <guid>https://timotk.github.io/tags/pydantic/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>python</title>
+      <link>https://timotk.github.io/tags/python/</link>
+      <pubDate>Mon, 07 Aug 2023 13:00:00 +0200</pubDate>
+      
+      <guid>https://timotk.github.io/tags/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>terminal</title>
+      <link>https://timotk.github.io/tags/terminal/</link>
+      <pubDate>Sat, 25 Jun 2022 12:30:00 +0200</pubDate>
+      
+      <guid>https://timotk.github.io/tags/terminal/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
