@@ -1,14 +1,32 @@
-# timotk.github.io
+# Blog
 
-Code for [my blog](https://timotk.github.io/). 
+Code for [my blog](https://timotk.github.io/).
 
-## Install
+## Usage
+
+Use [`just`](https://github.com/casey/just) to run commands.
+Install `just` with:
 
 ```shell
-brew install hugo
+cargo install just
 ```
 
-Install the submodules (for the theme):
+Choose which command to run:
+
 ```shell
-git submodule update --init
+just --choose
+```
+
+Or simply use the default to serves the local site:
+
+```shell
+just
+```
+
+## Installation of themes
+
+Install the submodules (for the theme):
+
+```shell
+git submodule update --init --recursive
 ```
