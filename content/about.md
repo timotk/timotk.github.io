@@ -1,6 +1,7 @@
 ---
-date: 2019-05-28
-type: section
-title: "About"
+# date: 2019-05-28
+# type: section
+title: "About me"
+hideMeta: true
 ---
-Hi, I am Timo.
+I am Timo. I work at [Xebia](https://xebia.com/) as a Machine Learning Engineer.
